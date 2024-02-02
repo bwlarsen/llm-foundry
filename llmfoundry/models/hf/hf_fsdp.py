@@ -93,6 +93,7 @@ def hf_get_hidden_layers(model: PreTrainedModel) -> Any:
         'layers',  # ProphetNet, Marian (from encoder)
         'model.layers',  # LLaMa
         'transformer.blocks',  # MPT
+        'model.transformer.blocks', #OLMo
     )
     layers = findattr(model, hidden_layers_attrs)
     if layers is None:
