@@ -176,14 +176,14 @@ def prepare_hf_causal_lm_model_for_fsdp(model: PreTrainedModel,
             if isinstance(child, torch.nn.Module):
                 child._fsdp_wrap = True
 
-        if model.config.tie_word_embeddings and not model.config.model_type == 'mpt':
-            raise ValueError(
-                'The passed in HuggingFaceModel has tied word embeddings ' +
-                'and the passed in initialization device is `mixed.` ' +
-                'In order to support this initialization scheme, we would need to break '
-                +
-                'the weight tying. As a result, either use a different initialization scheme '
-                + 'or in the model config set `tie_word_embeddings=False.`')
+        # if model.config.tie_word_embeddings and not model.config.model_type == 'mpt':
+        #     raise ValueError(
+        #         'The passed in HuggingFaceModel has tied word embeddings ' +
+        #         'and the passed in initialization device is `mixed.` ' +
+        #         'In order to support this initialization scheme, we would need to break '
+        #         +
+        #         'the weight tying. As a result, either use a different initialization scheme '
+        #         + 'or in the model config set `tie_word_embeddings=False.`')
     else:
         # When using the HF LM models,
         # the weights of the self.lm_head and self.transformer.wte are tied.
