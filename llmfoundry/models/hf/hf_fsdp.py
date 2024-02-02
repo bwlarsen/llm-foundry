@@ -66,7 +66,7 @@ def hf_get_causal_base_model(model: PreTrainedModel) -> Any:
     if hasattr(model, 'get_decoder'):
         return model.get_decoder()
 
-    decoder_attrs = ('transformer', 'model.decoder', 'gpt_neox')
+    decoder_attrs = ('transformer', 'model.decoder', 'gpt_neox', 'model.transformer')
     causal_base_model = findattr(model, decoder_attrs)
     if causal_base_model is None:
         raise ValueError(
